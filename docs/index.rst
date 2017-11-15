@@ -1,5 +1,5 @@
-Welcome to Python Integrador Fiscal Sefaz's documentation!
-======================================
+Comunicação com o Integrador Fiscal Sefaz do Ceara em Python
+=============================================================
 
 Contents:
 
