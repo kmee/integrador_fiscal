@@ -5,3 +5,8 @@
 __author__ = """KMEE INFORMATICA LTDA"""
 __email__ = 'contato@kmee.com.br'
 __version__ = '0.1.0'
+
+
+from .base import BibliotecaIntegrador
+from .clientelocal import ClienteIntegradorLocal
+# from .clienteintegradorhub import ClienteIntegradorHub
