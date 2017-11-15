@@ -3,7 +3,35 @@
 
 """The setup script."""
 
+import io
+import os
+import re
+import sys
+
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+
+
+def read(*filenames, **kwargs):
+    encoding = kwargs.get('encoding', 'utf-8')
+    sep = kwargs.get('sep', os.linesep)
+    buf = []
+    for filename in filenames:
+        with io.open(filename, encoding=encoding) as f:
+            buf.append(f.read())
+    return sep.join(buf)
+
+
+def read_install_requires():
+    content = read(os.path.join(
+            os.path.dirname(__file__), 'requirements', 'base.txt'))
+    return content.strip().split(os.linesep)
+
+def read_version():
+    content = read(os.path.join(
+            os.path.dirname(__file__), 'integrador_fiscal', '__init__.py'))
+    return re.search(r"__version__ = '([^']+)'", content).group(1)
+
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -13,6 +41,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'satcfe=='
     # TODO: put package requirements here
 ]
 
@@ -28,7 +57,7 @@ test_requirements = [
 
 setup(
     name='integrador_fiscal',
-    version='0.1.0',
+    version=read_version(),
     description="Python Integrador Fiscal Sefaz Ceara (MF-e, ct-e, vfp-e)",
     long_description=readme + '\n\n' + history,
     author="KMEE INFORMATICA LTDA",
@@ -41,7 +70,7 @@ setup(
         ]
     },
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=read_install_requires(),
     license="Apache Software License 2.0",
     zip_safe=False,
     keywords='integrador_fiscal',
