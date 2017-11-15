@@ -18,7 +18,7 @@ Python Integrador Fiscal Sefaz
      :alt: Updates
 
 
-Python Integrador Fiscal Sefaz Ceae, ct-e, vfp-e)
+Python Integrador Fiscal Sefaz Ceará (MF-e, CT-e, VFP-e)
 
 
 * Free software: Apache Software License 2.0
